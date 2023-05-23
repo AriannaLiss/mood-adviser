@@ -1,0 +1,7 @@
+.container{
+    background-color: white;
+    padding: 3rem;
+    min-height: 7rem;
+    display: flex;
+    align-items: center;
+}

@@ -1,0 +1,9 @@
+.container{
+    border-radius: 3rem;
+    background-color: rgb(215, 228, 233);
+    overflow: hidden;
+    min-width: 30rem;
+    min-height: 50rem;
+    display: flex;
+    flex-direction: column;
+}
