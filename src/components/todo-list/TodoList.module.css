@@ -2,9 +2,3 @@
     background-color: rgba(255, 255, 255, 0.563);
     flex: 1 0 auto;
 }
-.item{
-    padding: 2rem;
-}
-.item:hover{
-    background-color: rgb(221, 235, 235);
-}

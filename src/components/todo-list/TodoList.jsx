@@ -1,18 +1,21 @@
 import React from 'react';
+import TodoItem from '../todo-item/TodoItem';
 import cl from './TodoList.module.css'
 
-const TodoList = ({list}) => {
+const TodoList = ({items, deleteItem, onCheck}) => {
     return (
-        <ul className={cl.list}>
-            {list.map(item=>{
+        <div className={cl.list}>
+            {items.map(item=>{
                 return (
-                    <li
-                        key={item}
-                        className ={cl.item}
-                    >{item}</li>
+                    <TodoItem
+                        key={item.id}
+                        item={item}
+                        deleteItem={deleteItem}
+                        onCheck={onCheck}
+                    />
                 )
             })}
-        </ul>
+        </div>
     );
 };
 

@@ -4,4 +4,20 @@
     min-height: 7rem;
     display: flex;
     align-items: center;
+    position:relative;
+}
+
+.add{
+    position:absolute;
+    bottom: -1.5rem;
+    right: 2.2rem;
+    background-color: white;
+    border-radius: 50%;
+    transition: all 1s ease;
+    font-size:3rem;
+    height: 3rem;
+}
+
+.add:hover{
+    scale: 1.5;
 }

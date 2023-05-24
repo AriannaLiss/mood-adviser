@@ -1,14 +1,20 @@
 import React from 'react';
-import TodoList from '../../todo-list/TodoList';
 import cl from './Tab.module.css'
 
-const Tab = ({tabNames}) => {
+const Tab = ({tabNames, selectedTab, changeTab, children}) => {
     return (
         <div className={cl.container}>
             <ul className={cl.header}>
-                {tabNames.map(tab => <li className = {cl.headerItem} key = {tab}>{tab}</li>)}
+                {tabNames.map((tab, index) => 
+                    <li 
+                        className = {selectedTab==index?cl.selected+' '+cl.headerItem:cl.headerItem} 
+                        key = {tab} 
+                        onClick = {()=>changeTab(index)}
+                    >{tab}</li>)}
             </ul>
-            <TodoList list={['Walk in forest', 'Sit on the beach', 'Ride on bicycle']}/>
+            <div className={cl.body}>
+                {children}
+            </div>
         </div>
     );
 };

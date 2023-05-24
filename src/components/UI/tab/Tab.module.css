@@ -6,14 +6,24 @@
 
 .header{
     display:flex;
-    padding: 0 2.5rem;
+    padding: 1rem 2.5rem 0;
     list-style: none;
     background-color: rgb(221, 235, 235);
+    border-bottom: 2px solid green;
+    height: 4rem;
 }
 
 .headerItem{
     padding: 1rem .7rem;
     cursor: pointer;
+}
+
+.selected{
+    border: 2px solid green;
+    border-radius: 3rem 3rem 0 0;
+    border-bottom: none;
+    height:2rem;
+    background-color: rgb(221, 235, 235);
 }
 
 .headerItem:hover{
@@ -24,4 +34,6 @@
     min-height:100px;
     background-color: rgba(255, 255, 255, 0.563);
     flex: 1 0 auto;
+    display:flex;
+    flex-direction:column;
 }

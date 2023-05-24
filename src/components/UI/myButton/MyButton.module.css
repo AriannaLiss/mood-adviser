@@ -1,0 +1,22 @@
+.button{
+    padding: 1rem;
+    background: none;
+    border: 1.5px solid green;
+    border-radius: 3rem;
+    transition: background-color .5s ease;
+    color: green;
+    min-width: 8rem;
+}
+
+.reject{
+    color: rgb(118, 4, 4);
+    border-color:rgb(118, 4, 4);
+}
+
+.button:hover{
+    background-color: rgba(0, 128, 0, 0.19);
+}
+
+.reject:hover{
+    background-color: rgb(118, 4, 4, 0.2);
+}
