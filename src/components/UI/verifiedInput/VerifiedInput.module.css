@@ -1,0 +1,10 @@
+.errorMessage{
+    font-size: 1.5rem;
+    color:red;
+    padding:0!important;
+    margin: 0 0 .5rem!important;
+}
+
+.highlight{
+    border: 3px solid red;
+}

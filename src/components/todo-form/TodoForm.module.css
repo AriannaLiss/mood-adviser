@@ -1,12 +1,32 @@
-.container{
-    display: flex;
-    flex-direction: column;
-    padding: 1rem 0
+.title{
+    text-align: center;
 }
 
-.container>*{
-    margin:.5rem 0;
+.container, .fields{
+    display: flex;
+    flex-direction: column;
+}
+
+.form{
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+    padding: 1rem 0 0;
+    justify-content: space-between;
+}
+
+.fields{
+    flex: 1 0 auto;
+}
+
+.fields>*{
+    margin: .5rem 0;
     padding: 1rem;
+}
+
+.textarea{
+    flex: 1 0 auto;
+    min-height:4rem; 
 }
 
 .buttons{

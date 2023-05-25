@@ -2,19 +2,20 @@ import React from 'react';
 import TodoItem from '../todo-item/TodoItem';
 import cl from './TodoList.module.css'
 
-const TodoList = ({items, deleteItem, onCheck}) => {
+const TodoList = ({items, deleteItem, onCheck, showModal}) => {
     return (
         <div className={cl.list}>
-            {items.map(item=>{
-                return (
-                    <TodoItem
-                        key={item.id}
-                        item={item}
-                        deleteItem={deleteItem}
-                        onCheck={onCheck}
-                    />
-                )
-            })}
+            {items.length
+                ?items.map(item=>
+                        <TodoItem
+                            key={item.id}
+                            item={item}
+                            deleteItem={deleteItem}
+                            onCheck={onCheck}
+                            showModal={showModal}
+                        />)
+                :<div className={cl.message}>There is no any items<br/>here yet...</div>
+            }
         </div>
     );
 };

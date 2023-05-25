@@ -11,77 +11,102 @@ const Todo = () => {
 
     const tabs = ['All', 'Selected', 'Unselected'];
 
-    const [items, setItems] = useState([{id: 1, title:'Walk in forest', body:'jkl;kj', checked:false}, {id: 2, title:'Sit on the beach',body:'Ride on bicycle', checked:false}]);
+    const [items, setItems] = useState([]);
     const [newItem, setNewItem] = useState({id:'', title:'', body:''})
     const [modal, setModal] = useState(false);
-    const [selectedTab, setSelectedTab] = useState(0)
+    const [selectedTab, setSelectedTab] = useState(0);
     const [selectedItems, setSelectedItems] = useState(items);
-    
-    const addItem = (e) =>{
-        e.preventDefault();
-        setItems([...items, {...newItem, id: uuid(), checked:false}])
-        close();
-    }
+    const [isEdit, setIsEdit] = useState(false);
+    const [isError, setIsError] = useState(false)
 
     useEffect(()=>{
-        console.log('tab is changed '+selectedTab)
         switch(tabs[selectedTab]){
             case 'Selected': filterItems(); break;
             case 'Unselected': filterItems(false); break;
             default: setSelectedItems(items); 
         }
     },[selectedTab,items])
-
-    const filterItems = (isChecked = true) => {
-        const itemsCopy = items;
-        setSelectedItems(itemsCopy.filter(item=>isChecked?item.checked:!item.checked))
+    
+    const addItem = () =>{
+        setItems([...items, {...newItem, id: uuid(), checked:false}])
     }
     
-    const checkBoxChange = (id, isChecked) => {
-        const itemsCopy = [...items];
-        const selectedItemIndex = itemsCopy.findIndex(item=>item.id===id);
-        itemsCopy[selectedItemIndex] = {...items[selectedItemIndex], checked:isChecked};
-        console.log(itemsCopy[selectedItemIndex])
-        setItems(itemsCopy);
+    const editItem = () => {
+            const itemsCopy = [...items];
+            const selectedItemIndex = itemsCopy.findIndex(item=>item.id===newItem.id);
+            itemsCopy[selectedItemIndex] = {...newItem};
+            setItems(itemsCopy);
     }
 
     const deleteItem = (id) => {
-        console.log('going to delete '+id)
         const itemsCopy = [...items];
         setItems(itemsCopy.filter((item)=>item.id!=id))
     }
 
-    const changeTab = (index) => {
-        setSelectedTab(index);
+    const changeItem = () => {
+        isEdit ? editItem() : addItem();
+        close();
+    }
+
+    const checkBoxChange = (id, isChecked) => {
+        const itemsCopy = [...items];
+        const selectedItemIndex = itemsCopy.findIndex(item=>item.id===id);
+        itemsCopy[selectedItemIndex] = {...items[selectedItemIndex], checked:isChecked};
+        setItems(itemsCopy);
+    }
+
+    const filterItems = (isChecked = true) => {
+        const itemsCopy = [...items];
+        setSelectedItems(itemsCopy.filter(item=>isChecked?item.checked:!item.checked))
+    }
+
+    const verifyNewItem=()=>{
+        const validation = newItem.title && newItem.title.trim() ? true : false;
+        setIsError(!validation);
+        return validation;
     }
 
     const close = () =>{
         setNewItem({id:'', title:'', body:''});
-        setModal(false)
+        setIsError(false);
+        setModal(false);
+    }
+
+    const showModal = (item) => {
+        if (!item) setIsEdit(false);
+        else{
+            setIsEdit(true);
+            setNewItem(item);
+        }
+        setModal(true);
     }
 
     return (
         <div className={cl.container}>
             <TodoHeader
-                setModal={setModal}
+                showModal={showModal}
             />
             <Tab 
                 tabNames={tabs}
                 selectedTab={selectedTab}
-                changeTab={changeTab}
+                changeTab={setSelectedTab}
             >
                 <TodoList 
                     items = {selectedItems}
                     deleteItem={deleteItem}
                     onCheck = {checkBoxChange}
+                    showModal = {showModal}
                 />
             </Tab>
-            <Modal title='Add new element' isShow={modal} close={close}>
+            <Modal isShow={modal} close={close}>
                 <TodoForm 
                     newItem = {newItem}
                     setNewItem={setNewItem}
                     close={close}
-                    addItem={addItem}
+                    verify={verifyNewItem}
+                    changeItem={changeItem}
+                    isEdit={isEdit}
+                    isError={isError}
                 />
             </Modal>
         </div>
