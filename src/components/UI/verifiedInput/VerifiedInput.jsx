@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import cl from './VerifiedInput.module.css'
 
 const VerifiedInput = ({errorMessage, isError, ...props}) => {

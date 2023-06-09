@@ -7,7 +7,7 @@ const Tab = ({tabNames, selectedTab, changeTab, children}) => {
             <ul className={cl.header}>
                 {tabNames.map((tab, index) => 
                     <li 
-                        className = {selectedTab==index?cl.selected+' '+cl.headerItem:cl.headerItem} 
+                        className = {selectedTab===index?cl.selected+' '+cl.headerItem:cl.headerItem} 
                         key = {tab} 
                         onClick = {()=>changeTab(index)}
                     >{tab}</li>)}

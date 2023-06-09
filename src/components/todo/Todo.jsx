@@ -40,7 +40,7 @@ const Todo = () => {
 
     const deleteItem = (id) => {
         const itemsCopy = [...items];
-        setItems(itemsCopy.filter((item)=>item.id!=id))
+        setItems(itemsCopy.filter((item)=>item.id!==id))
     }
 
     const changeItem = () => {

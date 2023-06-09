@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import MyButton from '../UI/myButton/MyButton';
 import VerifiedInput from '../UI/verifiedInput/VerifiedInput';
 import cl from './TodoForm.module.css';
