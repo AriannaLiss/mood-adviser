@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/mood-adviser/static/css/main.e43774db.css",
-    "main.js": "/mood-adviser/static/js/main.b05cc5e7.js",
+    "main.js": "/mood-adviser/static/js/main.1d316502.js",
     "index.html": "/mood-adviser/index.html",
     "main.e43774db.css.map": "/mood-adviser/static/css/main.e43774db.css.map",
-    "main.b05cc5e7.js.map": "/mood-adviser/static/js/main.b05cc5e7.js.map"
+    "main.1d316502.js.map": "/mood-adviser/static/js/main.1d316502.js.map"
   },
   "entrypoints": [
     "static/css/main.e43774db.css",
-    "static/js/main.b05cc5e7.js"
+    "static/js/main.1d316502.js"
   ]
 }
